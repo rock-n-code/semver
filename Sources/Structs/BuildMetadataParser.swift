@@ -20,9 +20,9 @@ extension BuildMetadataParser: BuildMetadataStringParser {
         if let _ = string.wholeMatch(of: RegularExpressions.empty)?.output {
             return nil
         } else if let (_, buildNumber) = string.wholeMatch(of: RegularExpressions.buildNumber)?.output {
-            return .buildNumber(buildNumber)
+            return .buildNumber(version: buildNumber)
         } else {
-            return .custom(string)
+            return .custom(string: string)
         }
     }
     

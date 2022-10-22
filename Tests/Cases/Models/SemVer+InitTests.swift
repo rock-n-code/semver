@@ -192,7 +192,7 @@ final class SemVerInitTests: XCTestCase {
         XCTAssertEqual(result.minor, 2)
         XCTAssertEqual(result.patch, 3)
         XCTAssertNil(result.preRelease)
-        XCTAssertEqual(result.buildMetadata, .buildNumber(12))
+        XCTAssertEqual(result.buildMetadata, .buildNumber(version: 12))
     }
     
     func test_withVersion_andCustomMetadata() async throws {
@@ -208,7 +208,7 @@ final class SemVerInitTests: XCTestCase {
         XCTAssertEqual(result.minor, 2)
         XCTAssertEqual(result.patch, 3)
         XCTAssertNil(result.preRelease)
-        XCTAssertEqual(result.buildMetadata, .custom("x+x.x"))
+        XCTAssertEqual(result.buildMetadata, .custom(string: "x+x.x"))
     }
     
     func test_withVersion_anyPreRelease_andAnyBuildMetadata() async throws {
@@ -224,7 +224,7 @@ final class SemVerInitTests: XCTestCase {
         XCTAssertEqual(result.minor, 2)
         XCTAssertEqual(result.patch, 3)
         XCTAssertEqual(result.preRelease, .alpha(version: 1))
-        XCTAssertEqual(result.buildMetadata, .buildNumber(123))
+        XCTAssertEqual(result.buildMetadata, .buildNumber(version: 123))
     }
     
     func test_withEmpty() async throws {

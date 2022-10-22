@@ -21,7 +21,7 @@ final class BuildMetadataRawValueTests: XCTestCase {
     
     func test_whenBuildNumber_withZero() async throws {
         // GIVEN
-        buildMetadata = .buildNumber(0)
+        buildMetadata = .buildNumber(version: 0)
         
         // WHEN
         result = buildMetadata.rawValue
@@ -32,7 +32,7 @@ final class BuildMetadataRawValueTests: XCTestCase {
     
     func test_whenBuildNumber_withSmallNumber() async throws {
         // GIVEN
-        buildMetadata = .buildNumber(12)
+        buildMetadata = .buildNumber(version: 12)
         
         // WHEN
         result = buildMetadata.rawValue
@@ -43,7 +43,7 @@ final class BuildMetadataRawValueTests: XCTestCase {
     
     func test_whenBuildNumber_withBigNumber() async throws {
         // GIVEN
-        buildMetadata = .buildNumber(123456)
+        buildMetadata = .buildNumber(version: 123456)
         
         // WHEN
         result = buildMetadata.rawValue
@@ -54,7 +54,7 @@ final class BuildMetadataRawValueTests: XCTestCase {
     
     func test_whenCustom_withSomeText() async throws {
         // GIVEN
-        buildMetadata = .custom(.Seeds.Metadatas.defaultText)
+        buildMetadata = .custom(string: .Seeds.Metadatas.defaultText)
         
         // WHEN
         result = buildMetadata.rawValue
@@ -65,7 +65,7 @@ final class BuildMetadataRawValueTests: XCTestCase {
     
     func test_whenCustom_withEmptyText() async throws {
         // GIVEN
-        buildMetadata = .custom(.Seeds.Metadatas.empty)
+        buildMetadata = .custom(string: .Seeds.Metadatas.empty)
         
         // WHEN
         result = buildMetadata.rawValue
@@ -76,7 +76,7 @@ final class BuildMetadataRawValueTests: XCTestCase {
     
     func test_whenCustom_withWhitespaceText() async throws {
         // GIVEN
-        buildMetadata = .custom(.Seeds.Metadatas.multipleWhitespaces)
+        buildMetadata = .custom(string: .Seeds.Metadatas.multipleWhitespaces)
         
         // WHEN
         result = buildMetadata.rawValue

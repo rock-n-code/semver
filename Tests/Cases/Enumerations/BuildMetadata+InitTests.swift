@@ -27,7 +27,7 @@ final class BuildMetadataInitTests: XCTestCase {
         result = .init(rawValue: rawValue)
         
         // THEN
-        XCTAssertEqual(result, .custom(rawValue))
+        XCTAssertEqual(result, .custom(string: rawValue))
     }
     
     func test_withTwoZeros() async throws {
@@ -38,7 +38,7 @@ final class BuildMetadataInitTests: XCTestCase {
         result = .init(rawValue: rawValue)
         
         // THEN
-        XCTAssertEqual(result, .custom(rawValue))
+        XCTAssertEqual(result, .custom(string: rawValue))
     }
     
     func test_withThreeZeros() async throws {
@@ -49,7 +49,7 @@ final class BuildMetadataInitTests: XCTestCase {
         result = .init(rawValue: rawValue)
         
         // THEN
-        XCTAssertEqual(result, .buildNumber(0))
+        XCTAssertEqual(result, .buildNumber(version: 0))
     }
     
     func test_withTwoDigits() async throws {
@@ -60,7 +60,7 @@ final class BuildMetadataInitTests: XCTestCase {
         result = .init(rawValue: rawValue)
         
         // THEN
-        XCTAssertEqual(result, .buildNumber(12))
+        XCTAssertEqual(result, .buildNumber(version: 12))
     }
     
     func test_withMultipleDigits() async throws {
@@ -71,7 +71,7 @@ final class BuildMetadataInitTests: XCTestCase {
         result = .init(rawValue: rawValue)
         
         // THEN
-        XCTAssertEqual(result, .buildNumber(123456))
+        XCTAssertEqual(result, .buildNumber(version: 123456))
     }
     
     func test_withSomeText() async throws {
@@ -82,7 +82,7 @@ final class BuildMetadataInitTests: XCTestCase {
         result = .init(rawValue: rawValue)
         
         // THEN
-        XCTAssertEqual(result, .custom(rawValue))
+        XCTAssertEqual(result, .custom(string: rawValue))
     }
     
     func test_withEmpty() async throws {
