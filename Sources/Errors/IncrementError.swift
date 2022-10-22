@@ -8,5 +8,8 @@
 
 enum IncrementError: Error {
     case buildMetadataCannotIncrement
+    case buildMetadataNotDefined
+    case optionNotSelected
     case preReleaseCannotIncrement
+    case preReleaseNotDefined
 }
