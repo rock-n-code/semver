@@ -17,6 +17,8 @@ final class BuildMetadataInitTests: XCTestCase {
     var rawValue: String!
     var result: BuildMetadata!
     
+    // MARK: - Initialisers tests
+    
     func test_withOneZero() async throws {
         // GIVEN
         rawValue = .Seeds.Metadatas.oneZero

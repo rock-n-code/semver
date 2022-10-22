@@ -39,6 +39,23 @@ extension BuildMetadata: RawRepresentable {
     
 }
 
+// MARK: - Incrementable
+
+extension BuildMetadata: Incrementable {
+    
+    // MARK: Functions
+    
+    func increment() async throws -> BuildMetadata {
+        switch self {
+        case .buildNumber(let buildNumber):
+            return .buildNumber(buildNumber + 1)
+        case .custom:
+            throw IncrementError.buildMetadataCannotIncrement
+        }
+    }
+    
+}
+
 // MARK: - Equatable
 
 #if DEBUG
