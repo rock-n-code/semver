@@ -224,7 +224,7 @@ final class SemVerInitTests: XCTestCase {
         XCTAssertEqual(result.minor, 2)
         XCTAssertEqual(result.patch, 3)
         XCTAssertEqual(result.preRelease, .alpha(version: 1))
-        XCTAssertEqual(result.buildMetadata, .buildNumber(12))
+        XCTAssertEqual(result.buildMetadata, .buildNumber(123))
     }
     
     func test_withEmpty() async throws {
@@ -257,12 +257,7 @@ final class SemVerInitTests: XCTestCase {
         result = .init(string: string)
         
         // THEN
-        XCTAssertNotNil(result)
-        XCTAssertEqual(result.mayor, 1)
-        XCTAssertEqual(result.minor, 2)
-        XCTAssertEqual(result.patch, 3)
-        XCTAssertNil(result.preRelease)
-        XCTAssertEqual(result.buildMetadata, .custom("x.y+z-x.y-z"))
+        XCTAssertNil(result)
     }
 
 }

@@ -25,7 +25,7 @@ extension BuildMetadata: RawRepresentable {
         return converter(self)
     }
 
-    // MARK: Life cycle
+    // MARK: Initialisers
     
     public init?(rawValue: String) {
         let parser = BuildMetadataParser()

@@ -66,7 +66,18 @@ private extension SemVerParser {
             Optionally {
                 One("-")
                 Capture(as: References.preRelease) {
-                    OneOrMore(.anyNonNewline)
+                    OneOrMore(ChoiceOf {
+                        One(.word)
+                        One(.digit)
+                    })
+                    ZeroOrMore(ChoiceOf {
+                        One(.word)
+                        One(.digit)
+                        One(".")
+                        One("_")
+                        One("-")
+                        One("=")
+                    })
                 } transform: {
                     String($0)
                 }
@@ -74,7 +85,18 @@ private extension SemVerParser {
             Optionally {
                 One("+")
                 Capture(as: References.buildMetadata) {
-                    OneOrMore(.anyNonNewline)
+                    OneOrMore(ChoiceOf {
+                        One(.word)
+                        One(.digit)
+                    })
+                    ZeroOrMore(ChoiceOf {
+                        One(.word)
+                        One(.digit)
+                        One(".")
+                        One("_")
+                        One("+")
+                        One("=")
+                    })
                 } transform: {
                     String($0)
                 }

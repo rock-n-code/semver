@@ -16,28 +16,34 @@ public struct SemVer {
     public let preRelease: PreRelease?
     public let buildMetadata: BuildMetadata?
     
-    // MARK: Life Cycle
+    // MARK: Initialisers
     
     public init?(string: String) {
         let parser = SemVerParser()
         
         do {
-            guard let semver = try parser(string) else {
-                return nil
-            }
+            guard let semVer = try parser(string) else { return nil }
             
-            self = semver
+            self = semVer
         } catch {
             return nil
         }
     }
     
+}
+
+// MARK: - Internals
+
+extension SemVer {
+    
+    // MARK: Initialisers
+    
     init(
-        mayor: Int,
-        minor: Int,
-        patch: Int,
-        preRelease: PreRelease?,
-        buildMetadata: BuildMetadata?
+        mayor: Int = 0,
+        minor: Int = 0,
+        patch: Int = 0,
+        preRelease: PreRelease? = nil,
+        buildMetadata: BuildMetadata? = nil
     ) {
         self.mayor = mayor
         self.minor = minor
@@ -45,5 +51,5 @@ public struct SemVer {
         self.preRelease = preRelease
         self.buildMetadata = buildMetadata
     }
-    
+
 }
