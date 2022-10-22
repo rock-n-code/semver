@@ -8,4 +8,5 @@
 
 enum IncrementError: Error {
     case buildMetadataCannotIncrement
+    case preReleaseCannotIncrement
 }

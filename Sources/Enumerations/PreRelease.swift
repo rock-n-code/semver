@@ -39,6 +39,33 @@ extension PreRelease: RawRepresentable {
     
 }
 
+// MARK: - Incrementable
+
+extension PreRelease: Incrementable {
+    
+    // MARK: Functions
+    
+    func increment() async throws -> PreRelease {
+        let increment = { (version: Int?) -> Int in
+            guard let version else { return 2 }
+            
+            return version + 1
+        }
+        
+        switch self {
+        case .alpha(let version):
+            return .alpha(version: increment(version))
+        case .beta(let version):
+            return .beta(version: increment(version))
+        case .candidate(let version):
+            return .candidate(version: increment(version))
+        case .custom:
+            throw IncrementError.preReleaseCannotIncrement
+        }
+    }
+    
+}
+
 // MARK: - Equatable
 
 #if DEBUG
