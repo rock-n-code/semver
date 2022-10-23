@@ -21,10 +21,8 @@ public struct SemVer {
     // MARK: Initialisers
     
     public init?(string: String) {
-        let parser = SemVerParser()
-        
         do {
-            guard let semVer = try parser(string) else { return nil }
+            guard let semVer = try SemVerParser().callAsFunction(string) else { return nil }
             
             self = semVer
         } catch {
@@ -38,6 +36,18 @@ public struct SemVer {
         incrementOption = option
         
         return try await increment()
+    }
+    
+}
+
+// MARK: - CustomStringConvertible
+
+extension SemVer: CustomStringConvertible {
+    
+    // MARK: Computed
+    
+    public var description: String {
+        SemVerConverter().callAsFunction(self)
     }
     
 }
